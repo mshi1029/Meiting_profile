@@ -1,4 +1,4 @@
-# FX Receivable Exposure & Hedging Rationale — Scenario 2
+# FX Receivable Exposure & Hedging Rationale
 
 **Created by:** Mei Ting Shi  
 **Updated by:** Mei Ting Shi  
@@ -9,7 +9,7 @@
 
 ---
 
-## Executive Summary (≤150 Words)
+## Executive Summary 
 
 Our U.S. pharmaceutical firm expects to receive an €8,000,000 EUR-denominated payment in one year. At today's spot rate of 1.1608 USD/EUR, that receivable is worth approximately $9.29M — but the 1-year forward market prices EUR at only 1.0890, implying a ~6.2% depreciation and roughly $568K in potential lost proceeds if we remain unhedged. EUR/USD has already swung between 1.1453 and 1.2019 in 2026 alone, driven by diverging Fed and ECB policy paths. This memo frames the exposure, outlines three hedging strategies, and maps the analytical roadmap ahead in Stages 2–4.
 
