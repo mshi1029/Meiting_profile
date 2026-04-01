@@ -1,77 +1,46 @@
 # FX Receivable Exposure & Hedging Rationale — Scenario 2
 
-**Created by:** Mei Ting Shi
-**Updated by:** Mei Ting Shi
-**Date Created:** April 1, 2026
-**Date Updated:** April 1, 2026
-**Version:** 1.0
+**Created by:** [Your Name]  
+**Updated by:** [Your Name]  
+**Date Created:** April 1, 2026  
+**Date Updated:** April 1, 2026  
+**Version:** 1.0  
 **LLM Used:** Claude Sonnet 4.6
 
 ---
 
 ## Executive Summary
 
-Our U.S. pharmaceutical firm expects to receive an **€8,000,000 EUR-denominated payment in one year**. At today's spot rate of **1.1608 USD/EUR**, that receivable is worth approximately **$9.29M USD** — but the 1-year forward market prices EUR at only **1.0890**, implying a ~6.2% depreciation and roughly **$568K in potential lost proceeds** if we remain unhedged. EUR/USD has already swung between 1.1453 and 1.2019 in 2026 alone, reflecting diverging Fed and ECB policy paths. This memo frames the exposure, outlines three hedging strategies, and maps the analytical work ahead in Stages 2–4.
+Our U.S. pharmaceutical firm expects to receive an €8,000,000 EUR-denominated payment in one year. At today's spot rate of 1.1608 USD/EUR, that receivable is worth approximately $9.29M — but the 1-year forward market prices EUR at only 1.0890, implying a ~6.2% depreciation and roughly $568K in potential lost proceeds if we remain unhedged. EUR/USD has already swung between 1.1453 and 1.2019 in 2026 alone, driven by diverging Fed and ECB policy paths. This memo frames the exposure, outlines three hedging strategies, and maps the analytical roadmap ahead in Stages 2–4.
 
 ---
 
 ## Background & Objectives
 
-**The Exposure — Scenario 2: U.S. Pharmaceutical Exporter**
-
-| Parameter | Value |
-|---|---|
-| Receivable | $8,000,000 USD-equivalent, payable in EUR |
-| Horizon | 1 year from April 1, 2026 |
-| Spot Rate (K) | 1.1608 USD/EUR (Yahoo Finance, April 1, 2026) |
-| 1-Year Forward Rate | 1.0890 USD/EUR |
-| USD Interest Rate | 3.625% (Fed target midpoint, held March 2026) |
-| EUR Interest Rate | 2.00% (ECB deposit facility, held March 2026) |
-
-**Why it's risky:** The forward rate sits 6.2% below spot — the market is already pricing in meaningful EUR weakness. If our receivable settles near the forward rate instead of today's spot, we lose approximately $568K in USD proceeds before any further adverse move. Tail risk is elevated: the ECB faces ~26% market odds of a rate hike in April 2026 (Polymarket, March 31, 2026), adding volatility to EUR direction. An unhedged position exposes revenue targets and financial reporting to exchange rate outcomes entirely outside management's control.
-
-**Primary objective:** Evaluate whether and how to lock in or protect a portion of the USD value of this receivable before settlement.
+Our pharmaceutical export operations generate material EUR-denominated receivables. As a U.S.-based entity reporting in USD, any depreciation of the euro between invoice date and settlement directly reduces realized revenue. The 1-year forward rate of 1.0890 sits 6.2% below today's spot of 1.1608, meaning the market is already pricing in significant EUR weakness. If our receivable settles near the forward rate, we would lose approximately $568K in USD proceeds relative to spot — before accounting for any further adverse moves. Tail risk is elevated: the ECB faces roughly 26% market odds of a rate hike at its April 2026 meeting, adding directional uncertainty to EUR. The Federal Reserve, meanwhile, is holding rates at 3.50–3.75%, sustaining the interest rate differential that underpins USD strength. An unhedged position leaves revenue targets and financial reporting exposed to exchange rate outcomes entirely outside management's control. The primary objective of this analysis is to evaluate whether and how to protect a portion of the USD value of this receivable before settlement, and to select the most appropriate hedging instrument given our cost, flexibility, and certainty preferences.
 
 ---
 
 ## Methods
 
-Three hedging instrument families will be evaluated against the unhedged baseline:
-
-**1. Forward Contract** — Lock the rate today at **1.0890** for delivery in one year.
-- ✅ Full certainty; proceeds are known and budgetable.
-- ❌ No upside if EUR strengthens; creates a binding obligation.
-
-**2. EUR Put Option (Protective Floor)** — Buy the right to sell EUR at **K = 1.1608**, premium **$0.021/EUR**.
-- ✅ Floors downside; full upside retained if EUR appreciates.
-- ❌ Premium cost reduces net proceeds regardless of outcome.
-
-**3. EUR Call Option / Collar** — Buy or write EUR calls at **K = 1.1608**, premium **$0.026/EUR**; can be paired with the put to build a zero-cost collar.
-- ✅ Writing the call offsets put premium, reducing net hedging cost.
-- ❌ Writing a call caps USD upside above the strike.
-
-Stage 2 will model all three strategies plus the unhedged baseline across a terminal EUR/USD range of approximately 0.95–1.30, computing net USD proceeds and break-even rates for each approach.
+Three hedging instrument families will be evaluated against the unhedged baseline. A forward contract would lock the exchange rate today at 1.0890 for delivery in one year, providing complete certainty over USD proceeds with no upside participation if EUR strengthens. A EUR put option would purchase the right to sell EUR at a strike of 1.1608 (at-the-money spot) for a premium of $0.021 per EUR, flooring downside while retaining full upside if EUR appreciates, at the cost of the premium regardless of outcome. A EUR call option or collar structure, with a premium of $0.026 per EUR, can be written against the receivable to offset put premium cost and build a zero- or low-cost collar, though writing the call caps USD upside above the strike. Stage 2 will model all three strategies plus the unhedged baseline across a terminal EUR/USD range of approximately 0.95–1.30, computing net USD proceeds, premium-adjusted payoffs, and break-even rates for each approach.
 
 ---
 
 ## Limitations & Next Steps
 
-**Known constraints:** The forward rate of 1.0890 is provided as a scenario input and has not been independently validated against covered interest rate parity using the current USD/EUR rate differential. Option premiums are given inputs, not Black-Scholes derived; implied volatility is unspecified. Geopolitical risk (Middle East conflict, energy price shock) adds model uncertainty not captured in static scenario analysis.
-
-**Stage 2 — Excel Model Build:** Build a `.xlsx` prototype computing and comparing hedge outcomes (forward, put, call, unhedged) across simulated terminal rates, including net-of-premium payoffs and a break-even table.
-
-**Stage 3 — Technical Specification:** Document the model logic, inputs, and design assumptions precisely enough for an AI or analyst to reconstruct and extend it with sensitivity analysis.
-
-**Stage 4 — Final Analysis & Recommendation:** Select the optimal hedge strategy from model results, write a structured AI prompt for CFO-ready scenario narration, and deliver a final recommendation with supporting data.
-
-*Owner for all stages: Treasury / Finance team, pending CFO review of this Stage 1 framework.*
+The forward rate of 1.0890 is a scenario-provided input and has not been independently validated against covered interest rate parity using the current USD and EUR rate differential. Option premiums are given inputs rather than Black-Scholes derived values; implied volatility is unspecified, which limits precision in option payoff modeling. Geopolitical uncertainty stemming from the Middle East conflict and its effect on energy prices and ECB policy adds model risk not captured in static scenario analysis. Next steps are as follows. Stage 2 will produce a working Excel model computing and comparing hedge outcomes across simulated terminal rates, including a break-even table. Stage 3 will document the model architecture and design assumptions precisely enough for an AI or analyst to reconstruct and extend it. Stage 4 will select the optimal hedge strategy from model results, produce a structured AI prompt for CFO-ready scenario narration, and deliver a final recommendation. Treasury and Finance own all stages, pending CFO review and approval of this Stage 1 framework.
 
 ---
 
 ## References
 
-- Yahoo Finance. (2026, April 1). *EUR/USD Historical Prices*. https://finance.yahoo.com/quote/EURUSD=X/history/
-- Federal Reserve. (2026, March 18). *FOMC Statement*. https://www.federalreserve.gov/newsevents/pressreleases/monetary20260318a.htm
-- Trading Economics. (2026). *United States Fed Funds Rate*. https://tradingeconomics.com/united-states/interest-rate
-- European Central Bank. (2026, March 19). *Monetary Policy Decisions*. https://www.ecb.europa.eu/press/pr/date/2026/
-- Polymarket. (2026, March 31). *ECB Interest Rates: April 2026*. https://polymarket.com/event/ecb-interest-rates-april-2026
+Yahoo Finance. (2026, April 1). *EUR/USD historical prices*. https://finance.yahoo.com/quote/EURUSD=X/history/
+
+Federal Reserve. (2026, March 18). *FOMC statement*. https://www.federalreserve.gov/newsevents/pressreleases/monetary20260318a.htm
+
+Trading Economics. (2026). *United States Fed funds rate*. https://tradingeconomics.com/united-states/interest-rate
+
+European Central Bank. (2026, March 19). *Monetary policy decisions*. https://www.ecb.europa.eu/press/pr/date/2026/
+
+Polymarket. (2026, March 31). *ECB interest rates: April 2026*. https://polymarket.com/event/ecb-interest-rates-april-2026
